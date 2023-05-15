@@ -1,22 +1,28 @@
 import argparse
 import numpy as np
-from pbsq import parse_fastq_file, find_low_average_quality_positions
+from pbsq import calculate_average_quality_scores
 
-def process_fastq_file(file_path):
-    # Process the .fastq file
-    print(f"Processing file: {file_path}")
+def run_pbsq(quality_strings, average_length):
 
-    quality_strings = []
+    average_quality_scores = calculate_average_quality_scores(quality_strings)
 
-    with open(file_path, 'r') as fastq_file:
-        for _, _, quality_str in parse_fastq_file(fastq_file):
-            quality_strings.append(quality_str)
+    if (average_quality_scores):
+        pass
 
-    print(np.average([len(s) for s in quality_strings]))
-    low_average_quality_positions = find_low_average_quality_positions(quality_strings)
+    return average_quality_scores[:int(average_length)]
 
-    print(f"Low average quality positions: {low_average_quality_positions}")
+def run_xxxxx(quality_strings, average_length):
+    pass
 
+def parse_fastq_file(file_obj):
+    while True:
+        header = file_obj.readline().strip()
+        if not header:
+            break
+        sequence = file_obj.readline().strip()
+        file_obj.readline()
+        quality_str = file_obj.readline().strip()
+        yield header, sequence, quality_str
 
 def main():
     # Create the argparse object and define the arguments
@@ -27,8 +33,22 @@ def main():
     args = parser.parse_args()
 
     # Process each .fastq file
-    for read in args.reads:
-        process_fastq_file(read)
+    for file_path in args.reads:
+        print(f"Processing file: {file_path}")
+
+        headers = []
+        sequences = []
+        quality_strings = []
+
+        with open(file_path, 'r') as fastq_file:
+            for header, sequence, quality_str in parse_fastq_file(fastq_file):
+                headers.append(header)
+                sequences.append(sequence)
+                quality_strings.append(quality_str)
+        average_length_each_sequence = sum(len(x) for x in quality_strings) / len(quality_strings)
+
+        run_pbsq(quality_strings, average_length_each_sequence)
+
 
 if __name__ == '__main__':
     main()

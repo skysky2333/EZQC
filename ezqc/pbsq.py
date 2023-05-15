@@ -1,3 +1,5 @@
+import numpy as np
+
 def phred33_to_q(quality_str):
     return [ord(ch) - 33 for ch in quality_str]
 
@@ -13,3 +15,15 @@ def calculate_average_quality_scores(quality_strings):
     average_quality_scores = [total / num_sequences for total in position_sums]
 
     return average_quality_scores
+
+def run_pbsq(quality_strings, average_length):
+
+    average_quality_scores = calculate_average_quality_scores(quality_strings)
+    average_quality_scores = average_quality_scores[:int(average_length)]
+
+    avg_score = np.average(average_quality_scores)
+
+    if (avg_score < 20):
+        print(f"X | Per base sequence quality NOT pass. Average quality score {avg_score:.2f}")
+
+    return

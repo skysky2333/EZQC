@@ -1,18 +1,7 @@
 import argparse
 import numpy as np
-from pbsq import calculate_average_quality_scores
+from pbsq import run_pbsq
 
-def run_pbsq(quality_strings, average_length):
-
-    average_quality_scores = calculate_average_quality_scores(quality_strings)
-
-    if (average_quality_scores):
-        pass
-
-    return average_quality_scores[:int(average_length)]
-
-def run_xxxxx(quality_strings, average_length):
-    pass
 
 def parse_fastq_file(file_obj):
     while True:
@@ -45,7 +34,7 @@ def main():
                 headers.append(header)
                 sequences.append(sequence)
                 quality_strings.append(quality_str)
-        average_length_each_sequence = sum(len(x) for x in quality_strings) / len(quality_strings)
+        average_length_each_sequence = np.average([len(x) for x in quality_strings])
 
         run_pbsq(quality_strings, average_length_each_sequence)
 

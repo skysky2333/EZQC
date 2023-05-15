@@ -23,6 +23,8 @@ def run_pbsq(quality_strings, average_length):
 
     avg_score = np.average(average_quality_scores)
 
+    print(average_quality_scores)
+
     if (avg_score < 20):
         print(f"X | Per base sequence quality NOT pass. Average quality score {avg_score:.2f}")
 

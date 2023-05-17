@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def phred33_to_q(qual_string):
     return [ord(ch) - 33 for ch in qual_string]
 
@@ -19,13 +20,17 @@ def run_psqs2(quality_strings):
     counts, _ = np.histogram(mean_qual_scores, bins=bin_edges)
 
     proportion_low_quality = sum(mqs < 20 for mqs in mean_qual_scores) / len(mean_qual_scores)
-    print(proportion_low_quality)
+    if (proportion_low_quality < 0.01):
+        print("X | Per sequence quality score NOT pass. Because proportion of low quality is more than 1%")
+    else:
+        print("O | Per base sequence quality pass. proportion of low quality is less than 1%")
+
     # Create the plot
     plt.figure(figsize=(10, 6))
     plt.bar(bin_edges[:-1], counts, width=1, edgecolor="k", alpha=0.7)
     plt.xlabel("Mean Sequence Quality(Phred scores)")
     plt.ylabel("Number of Sequences")
-    plt.title("Per Sequence Quality Scores")
+    plt.title("Quality Scores distribution over all sequences")
     plt.xticks(bin_edges)
     plt.grid(True, linestyle='--', alpha=0.5)
 

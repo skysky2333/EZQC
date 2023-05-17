@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from color_print import print_color
 
 threhold = 20
 
@@ -55,12 +56,12 @@ def run_pbsq1(quality_strings, average_length):
 
 
     if (avg_score < threhold*0.75):
-        print(f"X | Per base sequence quality NOT pass. Low average quality score of {avg_score:.2f}")
+        print_color(f"X | Per base sequence quality NOT pass. Low average quality score of {avg_score:.2f}", "green")
     elif (all(x >= threhold for x in average_quality_scores)):
-        print(f"O | Per base sequence quality pass. With high average quality score of {avg_score:.2f}")
+        print_color(f"O | Per base sequence quality pass. With high average quality score of {avg_score:.2f}", "red")
     else:
         start, end = find_largest_range(average_quality_scores)
-        print(f"- | Per base sequence quality can be improved. With high quality reads from position {start} to {end}")
+        print_color(f"- | Per base sequence quality can be improved. With high quality reads from position {start} to {end}", "yellow")
 
     # Convert quality strings to quality scores
     quality_scores = [[phred33_to_q(char) for char in read] for read in quality_strings]

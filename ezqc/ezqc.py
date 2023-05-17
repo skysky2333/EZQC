@@ -48,9 +48,9 @@ def main():
                 headers.append(header)
                 sequences.append(sequence)
                 quality_strings.append(quality_str)
-        average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
+        # average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
 
-        run_pbsq1(quality_strings, average_length_each_sequence)
+        run_pbsq1(quality_strings)
         run_psqs2(quality_strings)
 
 if __name__ == '__main__':

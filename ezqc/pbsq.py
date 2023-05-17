@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 threhold = 20
 
@@ -11,9 +12,6 @@ def find_largest_range(lst):
     largest_range_length = 0
 
     for i, num in enumerate(lst):
-        print(num, end=" ")
-        print(start, end=" ")
-        print(end, end=" ")
         if num > threhold:
             if start == end:
                 start = end = i
@@ -51,7 +49,7 @@ def calculate_average_quality_scores(quality_strings):
 def run_pbsq(quality_strings, average_length):
 
     average_quality_scores = calculate_average_quality_scores(quality_strings)
-    average_quality_scores = average_quality_scores[:int(average_length)]
+    # average_quality_scores = average_quality_scores[:int(average_length)]
 
     avg_score = np.average(average_quality_scores)
 
@@ -64,5 +62,31 @@ def run_pbsq(quality_strings, average_length):
         start, end = find_largest_range(average_quality_scores)
         print(f"- | Per base sequence quality can be improved. With high quality reads from position {start} to {end}")
 
-        
+    # Convert quality strings to quality scores
+    quality_scores = [[phred33_to_q(char) for char in read] for read in quality_strings]
+
+    # Calculate the number of reads and the maximum length of the reads
+    num_reads = len(quality_strings)
+    max_read_length = max([len(read) for read in quality_strings])
+
+    # Calculate average, lower quartile, and upper quartile quality scores for each base position
+    average_quality_scores = [np.mean([read[j] for read in quality_scores if j < len(read)]) for j in range(max_read_length)]
+    lower_quartile_scores = [np.percentile([read[j] for read in quality_scores if j < len(read)], 25) for j in range(max_read_length)]
+    upper_quartile_scores = [np.percentile([read[j] for read in quality_scores if j < len(read)], 75) for j in range(max_read_length)]
+
+    # Create the plot
+    plt.plot(range(1, max_read_length+1), average_quality_scores, label='Mean')
+    plt.plot(range(1, max_read_length+1), lower_quartile_scores, label='Lower quartile', linestyle='--')
+    plt.plot(range(1, max_read_length+1), upper_quartile_scores, label='Upper quartile', linestyle='--')
+    plt.xlabel('Position in read (bp)')
+    plt.ylabel('Quality score')
+    plt.title('Per base sequence quality plot')
+    plt.xticks(np.arange(1, max_read_length+1, max(1, max_read_length//15)))  # Adjust x-axis tick spacing
+    plt.yticks(np.arange(0, np.max(average_quality_scores)+1, 2))
+    plt.grid(True)
+    plt.legend()
+
+    plt.savefig("ezqc_output/per_base_sequence_quality_plot.png")
+    # plt.show()
+
     return

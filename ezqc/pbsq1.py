@@ -46,7 +46,7 @@ def calculate_average_quality_scores(quality_strings):
 
     return average_quality_scores
 
-def run_pbsq(quality_strings, average_length):
+def run_pbsq1(quality_strings, average_length):
 
     average_quality_scores = calculate_average_quality_scores(quality_strings)
     # average_quality_scores = average_quality_scores[:int(average_length)]

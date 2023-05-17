@@ -1,6 +1,7 @@
 import argparse
 import numpy as np
-from pbsq import run_pbsq
+from pbsq1 import run_pbsq1
+from psqs2 import run_psqs2
 import os
 
 def parse_fastq_file(file_obj):
@@ -50,7 +51,7 @@ def main():
         average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
 
         run_pbsq(quality_strings, average_length_each_sequence)
-
+        run_psqs2(quality_strings)
 
 if __name__ == '__main__':
     main()

@@ -36,6 +36,7 @@ def main():
                 quality_strings.append(quality_str)
         average_length_each_sequence = np.average([len(x) for x in quality_strings])
 
+        
         run_pbsq(quality_strings, average_length_each_sequence)
 
 

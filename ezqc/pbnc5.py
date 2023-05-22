@@ -44,6 +44,7 @@ def plot_n_content(n_content):
     # Add labels and a legend
     plt.xlabel('Position in read (bp)')
     plt.ylabel('N content (%)')
+    plt.ylim(0, 100)
     plt.legend()
 
     # Show the plot
@@ -56,6 +57,6 @@ def run_pbnc5(seqs):
     if (greater_20>0):
         print_color(f"X | Per base N content NOT pass. {greater_20} positions with greater than 20% N content", "red")
     elif (greater_10):  
-        print_color(f"X | Per base N content warning. {greater_10} positions with greater than 10% N content", "yellow")
+        print_color(f"- | Per base N content warning. {greater_10} positions with greater than 10% N content", "yellow")
     else:
-        print_color(f"X | Per base N content pass. No positions with greater than 10% N content", "green")
+        print_color(f"O | Per base N content pass. No positions with greater than 10% N content", "green")

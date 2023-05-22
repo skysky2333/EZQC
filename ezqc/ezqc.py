@@ -5,6 +5,7 @@ from psqs2 import run_psqs2
 from pbsc3 import run_pbsc3
 from pbnc5 import run_pbnc5
 from os8 import run_os8
+from ac9 import run_ac9
 import os
 
 def parse_fastq_file(file_obj):
@@ -58,6 +59,7 @@ def main():
         run_pbsc3(sequences)
         run_pbnc5(sequences)
         run_os8(sequences)
+        run_ac9(sequences)
 
 if __name__ == '__main__':
     main()

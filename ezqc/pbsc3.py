@@ -40,7 +40,6 @@ def plot_base_content(base_content):
     # Create the x-values for our plot (the position in the read)
     x_values = list(range(1, len(base_content['A'])+1))
 
-    # Create a new figure
     plt.figure()
 
     # Plot the base content for each base 
@@ -50,6 +49,7 @@ def plot_base_content(base_content):
     # Add labels and a legend
     plt.xlabel('Position in read (bp)')
     plt.ylabel('Base content (%)')
+    plt.ylim(0, 100)
     plt.legend()
 
     # Show the plot

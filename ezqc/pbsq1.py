@@ -2,68 +2,68 @@ import numpy as np
 import matplotlib.pyplot as plt
 from color_print import print_color
 
-threhold = 20
+threshold = 24
 
-def phred33_to_q(quality_str):
-    return [ord(ch) - 33 for ch in quality_str]
+def find_largest_range(numbers):
+    start = end = max_start = max_end = 0
+    max_length = 0
 
-def find_largest_range(lst):
-    start = end = 0
-    largest_start = largest_end = 0
-    largest_range_length = 0
-
-    for i, num in enumerate(lst):
-        if num > threhold:
-            if start == end:
-                start = end = i
-                end = i+1
-            else:
-                end = i
+    for i in range(1, len(numbers)):
+        if numbers[i] == numbers[i-1] + 1:
+            end = i
         else:
-            if end - start > largest_range_length:
-                largest_start = start
-                largest_end = end
-                largest_range_length = end - start
-            start = end = i + 1
+            length = end - start + 1
+            if length > max_length:
+                max_length = length
+                max_start = start
+                max_end = end
+            start = end = i
 
     # Check if the last range is the largest
-    if end - start > largest_range_length:
-        largest_start = start
-        largest_end = end
-        largest_range_length = end - start
+    length = end - start + 1
+    if length > max_length:
+        max_length = length
+        max_start = start
+        max_end = end
 
-    return largest_start, largest_end
+    return numbers[max_start], numbers[max_end]
 
-def calculate_average_quality_scores(quality_strings):
+
+def phred33_to_q(quality_str):
+    return np.array([ord(ch) - 33 for ch in quality_str])
+
+def calculate_quality_scores(quality_strings):
     num_sequences = len(quality_strings)
     max_length = max(len(qstr) for qstr in quality_strings)
-    position_sums = [0] * max_length
+    quality_scores = np.zeros((num_sequences, max_length))
+    mask = np.zeros_like(quality_scores, dtype=bool)
 
-    for qstr in quality_strings:
-        for i, q in enumerate(phred33_to_q(qstr)):
-            position_sums[i] += q
-
-    average_quality_scores = [total / num_sequences for total in position_sums]
-
-    return average_quality_scores
+    for i, qstr in enumerate(quality_strings):
+        scores = phred33_to_q(qstr)
+        quality_scores[i, :len(scores)] = scores
+        mask[i, :len(scores)] = True
+    
+    return quality_scores, mask
 
 def run_pbsq1(quality_strings):
-
-    # Convert quality strings to quality scores
-    quality_scores = [[phred33_to_q(char) for char in read] for read in quality_strings]
+    # Convert quality strings to quality scores 
+    quality_scores, mask = calculate_quality_scores(quality_strings)
 
     # Calculate the number of reads and the maximum length of the reads
-    max_read_length = max([len(read) for read in quality_strings])
+    max_read_length = quality_scores.shape[1]
 
     # Calculate average, lower quartile, and upper quartile quality scores for each base position
-    average_quality_scores = [np.mean([read[j] for read in quality_scores if j < len(read)]) for j in range(max_read_length)]
-    lower_quartile_scores = [np.percentile([read[j] for read in quality_scores if j < len(read)], 25) for j in range(max_read_length)]
-    upper_quartile_scores = [np.percentile([read[j] for read in quality_scores if j < len(read)], 75) for j in range(max_read_length)]
+    masked_quality_scores = np.ma.masked_array(quality_scores, ~mask)
+    average_quality_scores = masked_quality_scores.mean(axis=0).data
+    lower_quartile_scores = np.ma.apply_along_axis(lambda x: np.percentile(x.compressed(), 25), 0, masked_quality_scores)
+    upper_quartile_scores = np.ma.apply_along_axis(lambda x: np.percentile(x.compressed(), 75), 0, masked_quality_scores)
 
     # Create the plot
-    plt.plot(range(1, max_read_length+1), average_quality_scores, label='Mean')
-    plt.plot(range(1, max_read_length+1), lower_quartile_scores, label='Lower quartile', linestyle='--')
-    plt.plot(range(1, max_read_length+1), upper_quartile_scores, label='Upper quartile', linestyle='--')
+    positions = np.arange(1, max_read_length+1)
+    plt.plot(positions, average_quality_scores, label='Mean')
+    plt.plot(positions, lower_quartile_scores, label='Lower quartile', linestyle='--')
+    plt.plot(positions, upper_quartile_scores, label='Upper quartile', linestyle='--')
+
     plt.xlabel('Position in read (bp)')
     plt.ylabel('Quality score')
     plt.title('Per base sequence quality plot')
@@ -71,24 +71,18 @@ def run_pbsq1(quality_strings):
     plt.yticks(np.arange(0, np.max(average_quality_scores)+1, 2))
     plt.grid(True)
     plt.legend()
-
     plt.savefig("ezqc_output/per_base_sequence_quality_plot.png")
     # plt.show()
 
-
-    average_quality_scores = calculate_average_quality_scores(quality_strings)
-    # average_quality_scores = average_quality_scores[:int(average_length)]
-
     avg_score = np.average(average_quality_scores)
 
-
-    if (avg_score < threhold*0.75):
+    if avg_score < threshold*0.75:
         print_color(f"X | Per base sequence quality NOT pass. Low average quality score of {avg_score:.2f}", "green")
-    elif (all(x >= threhold for x in average_quality_scores)):
+    elif np.all(average_quality_scores >= threshold):
         print_color(f"O | Per base sequence quality pass. With high average quality score of {avg_score:.2f}", "red")
     else:
-        start, end = find_largest_range(average_quality_scores)
+        indices_above_threshold = np.where(average_quality_scores >= threshold)[0]
+        start, end = find_largest_range(indices_above_threshold)
         print_color(f"- | Per base sequence quality can be improved. With high quality reads from position {start} to {end}", "yellow")
-
 
     return

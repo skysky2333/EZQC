@@ -2,6 +2,7 @@ import argparse
 import numpy as np
 from pbsq1 import run_pbsq1
 from psqs2 import run_psqs2
+from pbsc3 import run_pbsc3
 import os
 
 def parse_fastq_file(file_obj):
@@ -19,7 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description="EZQC FastQ Quality Analyzer")
     parser.add_argument('reads', metavar='READ', nargs='+', help='input .fastq file(s)')
 
-    # Parse the command-line arguments
+    # Parse the command-line arguments 
     args = parser.parse_args()
 
     directory_name = "ezqc_output"
@@ -52,6 +53,7 @@ def main():
 
         run_pbsq1(quality_strings)
         run_psqs2(quality_strings)
+        run_pbsc3(sequences)
 
 if __name__ == '__main__':
     main()

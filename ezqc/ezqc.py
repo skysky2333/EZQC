@@ -1,11 +1,11 @@
 import argparse
 import numpy as np
-from pbsq1 import run_pbsq1
-from psqs2 import run_psqs2
-from pbsc3 import run_pbsc3
-from pbnc5 import run_pbnc5
-from os8 import run_os8
-from ac9 import run_ac9
+from .pbsq1 import run_pbsq1
+from .psqs2 import run_psqs2
+from .pbsc3 import run_pbsc3
+from .pbnc5 import run_pbnc5
+from .os8 import run_os8
+from .ac9 import run_ac9
 import os
 
 def parse_fastq_file(file_obj):
@@ -21,7 +21,7 @@ def parse_fastq_file(file_obj):
 def main():
     # Create the argparse object and define the arguments
     parser = argparse.ArgumentParser(description="EZQC FastQ Quality Analyzer")
-    parser.add_argument('reads', metavar='READ', nargs='+', help='input .fastq file(s)')
+    parser.add_argument('seqs', metavar='SEQ', nargs='+', help='input .fastq file(s)')
 
     # Parse the command-line arguments 
     args = parser.parse_args()
@@ -40,7 +40,7 @@ def main():
         print(f"Directory '{directory_name}' already exists.")
 
     # Process each .fastq file
-    for file_path in args.reads:
+    for file_path in args.seqs:
         print(f"Processing file: {file_path}")
 
         headers = []

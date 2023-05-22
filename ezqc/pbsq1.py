@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 
 threshold = 24
 

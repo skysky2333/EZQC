@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 
 adapters = {
     'Illumina Universal Adapter': 'AGATCGGAAGAG',
@@ -22,7 +22,7 @@ def calculate_adapter_content(sequences, adapters):
 
     all_pass = True
     for name, percentage in percentages.items():
-        if max(percentage) > 10:  # check if adapter is present in more than 5% of all reads
+        if max(percentage) > 10:
             print_color(f'X | {name} is present in more than 10% of all reads','red')
             all_pass = False
         elif (max(percentage) > 5):

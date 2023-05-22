@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 
 def phred33_to_q(qual_string):
     return [ord(ch) - 33 for ch in qual_string]

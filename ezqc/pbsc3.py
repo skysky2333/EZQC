@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 
 
 def per_base_sequence_content(seqs):

@@ -1,6 +1,13 @@
 import matplotlib.pyplot as plt
+from color_print import print_color
+
+
+
 
 def per_base_sequence_content(seqs):
+    greater_20 = 0
+    greater_10 = 0
+
     # Initialize a dictionary to hold our counts
     base_content = {'A': [], 'T': [], 'C': [], 'G': []}
 
@@ -21,8 +28,13 @@ def per_base_sequence_content(seqs):
         total_count = sum(pos_counts.values())
         for base in base_content.keys():
             base_content[base].append(pos_counts[base] / total_count * 100)
+        
+        if abs(base_content['A'][-1] - base_content['T'][-1]) > 20 or abs(base_content['G'][-1] - base_content['C'][-1]) > 20:
+            greater_20 += 1
+        if abs(base_content['A'][-1] - base_content['T'][-1]) > 10 or abs(base_content['G'][-1] - base_content['C'][-1]) > 10:
+            greater_10 += 1
 
-    return base_content
+    return base_content, greater_10, greater_20
 
 
 
@@ -47,4 +59,11 @@ def plot_base_content(base_content):
     #plt.show()
 
 def run_pbsc3(seqs):
-    plot_base_content(per_base_sequence_content(seqs))
+    content, greater_10, greater_20 = per_base_sequence_content(seqs)
+    plot_base_content(content)
+    if (greater_20>0):
+        print_color(f"X | Per base sequence content NOT pass. {greater_20} positions with greater than 20% differences", "red")
+    elif (greater_10):  
+        print_color(f"X | Per base sequence content warning. {greater_10} positions with greater than 10% differences", "yellow")
+    else:
+        print_color(f"X | Per base sequence content pass. No positions with greater than 10% differences", "green")

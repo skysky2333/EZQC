@@ -24,7 +24,7 @@ def run_psqs2(quality_strings):
     if (proportion_low_quality > 0.01):
         print_color(f"X | Per sequence quality score NOT pass. Because proportion of low quality is {100*proportion_low_quality:.2f} %, which is more than 1%","red")
     else:
-        print_color(f"O | Per base sequence quality pass. Proportion of low quality is {100*proportion_low_quality:.2f} %, which is less than 1%","green")
+        print_color(f"O | Per sequence quality pass. Proportion of low quality is {100*proportion_low_quality:.2f} %, which is less than 1%","green")
 
     # Create the plot
     plt.figure(figsize=(10, 6))

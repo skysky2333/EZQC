@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 
 
 def per_base_sequence_content(seqs):
@@ -57,7 +57,6 @@ def plot_base_content(base_content):
     #plt.show()
 
 def run_pbsc3(seqs):
-    print("running function 3: Per base sequence content")
     content, greater_10, greater_20 = per_base_sequence_content(seqs)
     plot_base_content(content)
     if (greater_20>0):

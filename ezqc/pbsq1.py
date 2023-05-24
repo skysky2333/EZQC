@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 
 threshold = 24
 
@@ -46,7 +46,6 @@ def calculate_quality_scores(quality_strings):
     return quality_scores, mask
 
 def run_pbsq1(quality_strings):
-    print("running function 1: Per base sequence quality")
     # Convert quality strings to quality scores 
     quality_scores, mask = calculate_quality_scores(quality_strings)
 

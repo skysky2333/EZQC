@@ -43,7 +43,7 @@ from Bio.SeqUtils import GC
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
-from color_print import print_color
+from .color_print import print_color
 # need to pip install scipy
 
 def compute_gc_content(sequences):

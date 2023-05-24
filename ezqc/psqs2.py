@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 
 def phred33_to_q(qual_string):
     return [ord(ch) - 33 for ch in qual_string]
@@ -10,7 +10,6 @@ def mean_qual_score(qual_string):
     return np.mean(qual_scores)
 
 def run_psqs2(quality_strings):
-    print("running function 2: Per sequence quality scores")
 # Calculate mean quality scores for each sequence
     mean_qual_scores = [mean_qual_score(qual_string) for qual_string in quality_strings]
 

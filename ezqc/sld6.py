@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from color_print import print_color
+from .color_print import print_color
 from collections import Counter
 
 def calculate_sequence_lengths(sequences):
@@ -25,7 +25,7 @@ def plot_sequence_lengths(sequence_lengths):
     # plt.show()
 
 def run_sld6(sequences):
-    print("running function 6: Sequence Length Distribution")
+    # print("running function 6: Sequence Length Distribution")
     sequence_lengths = calculate_sequence_lengths(sequences)
     plot_sequence_lengths(sequence_lengths)
 

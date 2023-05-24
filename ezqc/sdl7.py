@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 from collections import Counter
-from color_print import print_color
-import matplotlib.pyplot as plt
-from collections import Counter
+from .color_print import print_color
 import numpy as np
 
 def calculate_duplication_levels(sequences):
@@ -64,7 +62,7 @@ def plot_duplication_levels(duplication_levels):
 
 
 def run_sdl7(sequences):
-    print("running function 7: Sequence Duplication Levels")
+    # print("running function 7: Sequence Duplication Levels")
     duplication_levels = calculate_duplication_levels(sequences)
     plot_duplication_levels(duplication_levels)
 

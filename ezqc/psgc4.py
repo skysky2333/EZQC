@@ -121,7 +121,7 @@ def detect_warnings_failures(gc_contents,sequences):
         print_color("O | The sum of the deviations from the normal distribution are good","green")
 
 def run_psgc4(sequences):
-    print("running function 4: Per sequence GC content")
+    # print("running function 4: Per sequence GC content")
     gc_contents = compute_gc_content(sequences)
     generate_plot(gc_contents)
     detect_warnings_failures(gc_contents,sequences)

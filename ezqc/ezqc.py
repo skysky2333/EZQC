@@ -3,7 +3,10 @@ import numpy as np
 from .pbsq1 import run_pbsq1
 from .psqs2 import run_psqs2
 from .pbsc3 import run_pbsc3
+# from .psgc4 import run_psgc4
 from .pbnc5 import run_pbnc5
+from .sld6 import run_sld6
+# from .sdl7 import run_sdl7
 from .os8 import run_os8
 from .ac9 import run_ac9
 import os
@@ -57,7 +60,10 @@ def main():
         run_pbsq1(quality_strings)
         run_psqs2(quality_strings)
         run_pbsc3(sequences)
+#        run_psgc4(sequences)
         run_pbnc5(sequences)
+        run_sld6(sequences)
+#        run_sdl7(sequences)
         run_os8(sequences)
         run_ac9(sequences)
 

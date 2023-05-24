@@ -29,7 +29,7 @@ EZQC is capable of performing the following analyses:
 ## Quick Start Guide
 
 1. Install EZQC following [Installation guide](#installation).
-2. Run the tool on a toy example using the command `ezqc tests/SS020182.fastq`.
+2. Run the tool on a toy example using the command `ezqc tests/SRR020182.fastq` (fastq file from [IGSR](https://www.internationalgenome.org/data-portal/sample/NA18486)).
 3. The results will be displayed in the terminal, and figures as well as csv tables will be saved to a directory named `ezqc_output` in your current working directory. Note that this file is choosen intendedly to fail multiple QC tests.
 
 ## Installation

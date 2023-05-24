@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from .color_print import print_color
+from color_print import print_color
 
 def phred33_to_q(qual_string):
     return [ord(ch) - 33 for ch in qual_string]
@@ -10,6 +10,7 @@ def mean_qual_score(qual_string):
     return np.mean(qual_scores)
 
 def run_psqs2(quality_strings):
+    print("running function 2: Per sequence quality scores")
 # Calculate mean quality scores for each sequence
     mean_qual_scores = [mean_qual_score(qual_string) for qual_string in quality_strings]
 
@@ -22,9 +23,11 @@ def run_psqs2(quality_strings):
     proportion_low_quality = sum(mqs < 20 for mqs in mean_qual_scores) / len(mean_qual_scores)
     # print(proportion_low_quality)
     if (proportion_low_quality > 0.01):
-        print_color(f"X | Per sequence quality score NOT pass. Because proportion of low quality is {100*proportion_low_quality:.2f} %, which is more than 1%","red")
+        print_color(f"X | Per sequence quality score NOT pass. Because proportion of low quality is \
+                    {100*proportion_low_quality:.2f} %, which is more than 1%","red")
     else:
-        print_color(f"O | Per sequence quality pass. Proportion of low quality is {100*proportion_low_quality:.2f} %, which is less than 1%","green")
+        print_color(f"O | Per sequence quality pass. Proportion of low quality is {100*proportion_low_quality:.2f} %, \
+                    which is less than 1%","green")
 
     # Create the plot
     plt.figure(figsize=(10, 6))

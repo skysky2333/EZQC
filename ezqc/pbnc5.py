@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from .color_print import print_color
+from color_print import print_color
 
 def per_base_n_content(seqs):
     greater_20 = 0
@@ -47,11 +47,12 @@ def plot_n_content(n_content):
     plt.ylim(0, 100)
     plt.legend()
 
-    # Show the plot
+    # Save and/or display the plot
     plt.savefig("ezqc_output/per_base_N_content_plot.png")
     #plt.show()
 
 def run_pbnc5(seqs):
+    print("running function 5; Per base N content")
     content, greater_10, greater_20 = per_base_n_content(seqs)
     plot_n_content(content)
     if (greater_20>0):

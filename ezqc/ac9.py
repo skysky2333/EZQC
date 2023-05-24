@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from .color_print import print_color
+from color_print import print_color
 
 adapters = {
     'Illumina Universal Adapter': 'AGATCGGAAGAG',
@@ -46,9 +46,11 @@ def plot_adapter_content(adapter_percentages):
     plt.title('Adapter Content')
     plt.legend()
 
+    # Save and/or display the plot
     plt.savefig("ezqc_output/adaptor_content_plot.png")
     #plt.show()
 
 def run_ac9(seqs):
+    print("running function 9: Adapter Content")
     adapter_percentages = calculate_adapter_content(seqs, adapters)
     plot_adapter_content(adapter_percentages)

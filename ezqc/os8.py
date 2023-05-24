@@ -1,8 +1,9 @@
 import collections
 import csv
-from .color_print import print_color
+from color_print import print_color
 
 def run_os8(dna_sequences):
+    print("running function 8: Overrepresented sequences")
     total_count = len(dna_sequences)
     
     counter = collections.Counter(dna_sequences)

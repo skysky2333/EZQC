@@ -1,4 +1,5 @@
 # EZQC: Easy Quality Control for FastQ Files
+![test1 Gif](tests/test1.gif)
 
 ## Table of Contents
 - [EZQC: Easy Quality Control for FastQ Files](#ezqc-easy-quality-control-for-fastq-files)

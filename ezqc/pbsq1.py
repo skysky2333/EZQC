@@ -78,11 +78,12 @@ def run_pbsq1(quality_strings):
 
     if avg_score < threshold*0.75:
         print_color(f"X | Per base sequence quality NOT pass. Low average quality score of {avg_score:.2f}", "green")
+        return False
     elif np.all(average_quality_scores >= threshold):
         print_color(f"O | Per base sequence quality pass. With high average quality score of {avg_score:.2f}", "red")
+        return True
     else:
         indices_above_threshold = np.where(average_quality_scores >= threshold)[0]
         start, end = find_largest_range(indices_above_threshold)
         print_color(f"- | Per base sequence quality can be improved. With high quality reads from position {start} to {end}", "yellow")
-
-    return
+        return False

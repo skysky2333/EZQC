@@ -15,10 +15,13 @@ def detect_warnings_failures(gc_contents,sequences):
 
     if sum_deviation > warning_threshold and sum_deviation <= failure_threshold:
         print_color("- | The sum of the deviations from the normal distribution represents more than 15% of the reads.","yellow")
+        return False
     elif sum_deviation > failure_threshold:
         print_color("X | The sum of the deviations from the normal distribution represents more than 30% of the reads.","red")
+        return False
     else:
         print_color("O | The sum of the deviations from the normal distribution are good","green")
+        return True
 
 def run_psgc4(sequences):
     gc_contents = []
@@ -49,4 +52,4 @@ def run_psgc4(sequences):
     plt.savefig("ezqc_output/per_sequence_GC_content.png")
     # plt.show()
 
-    detect_warnings_failures(gc_contents,sequences)
+    return detect_warnings_failures(gc_contents,sequences)

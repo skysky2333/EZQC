@@ -56,7 +56,10 @@ def run_pbnc5(seqs):
     plot_n_content(content)
     if (greater_20>0):
         print_color(f"X | Per base N content NOT pass. {greater_20} positions with greater than 20% N content", "red")
+        return False
     elif (greater_10):  
         print_color(f"- | Per base N content warning. {greater_10} positions with greater than 10% N content", "yellow")
+        return False
     else:
         print_color(f"O | Per base N content pass. No positions with greater than 10% N content", "green")
+        return True

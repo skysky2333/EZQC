@@ -28,5 +28,6 @@ def run_sld6(sequences):
     # print("running function 6: Sequence Length Distribution")
     sequence_lengths = calculate_sequence_lengths(sequences)
     plot_sequence_lengths(sequence_lengths)
+    return True
 
     

@@ -61,7 +61,10 @@ def run_pbsc3(seqs):
     plot_base_content(content)
     if (greater_20>0):
         print_color(f"X | Per base sequence content NOT pass. {greater_20} positions with greater than 20% differences", "red")
+        return False
     elif (greater_10):  
         print_color(f"X | Per base sequence content warning. {greater_10} positions with greater than 10% differences", "yellow")
+        return False
     else:
         print_color(f"X | Per base sequence content pass. No positions with greater than 10% differences", "green")
+        return True

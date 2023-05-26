@@ -41,10 +41,13 @@ def main():
     else:
         print(f"Directory '{directory_name}' already exists.")
 
+    total_num = 0
+    pass_num = 0
+
     # Process each .fastq file
     for file_path in args.seqs:
         print(f"Processing file: {file_path}")
-
+        total_num += 1
         headers = []
         sequences = []
         quality_strings = []
@@ -56,14 +59,19 @@ def main():
                 quality_strings.append(quality_str)
         # average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
 
-        run_pbsq1(quality_strings)
-        run_psqs2(quality_strings)
-        run_pbsc3(sequences)
-        run_psgc4(sequences)
-        run_pbnc5(sequences)
-        run_sld6(sequences)
-        run_os7(sequences)
+    results = [
+        run_pbsq1(quality_strings),
+        run_psqs2(quality_strings),
+        run_pbsc3(sequences),
+        run_psgc4(sequences),
+        run_pbnc5(sequences),
+        run_sld6(sequences),
+        run_os7(sequences),
         run_ac8(sequences)
+    ]
+    if all(results): 
+        pass_num += 1
+    print(f"All fastq file analyzied, {pass_num}/{total_num} passed all tests.")
 
 if __name__ == '__main__':
     main()

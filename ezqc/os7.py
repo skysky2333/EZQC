@@ -30,7 +30,10 @@ def run_os7(dna_sequences):
 
     if (sequences_exceeding_1_percent > 0):
         print_color(f"X | Overrepresented sequences NOT pass. {sequences_exceeding_1_percent} sequences representing more than 1% of the total", "red")
+        return False
     elif (sequences_exceeding_0_1_percent > 0):
         print_color(f"- | Overrepresented sequences warning. {sequences_exceeding_0_1_percent} sequences representing more than 0.1% of the total", "yellow")
+        return False
     else:
-        print_color(f"- | Overrepresented sequences pass. No sequences representing more than 0.1% of the total", "green")
+        print_color(f"O | Overrepresented sequences pass. No sequences representing more than 0.1% of the total", "green")
+        return True

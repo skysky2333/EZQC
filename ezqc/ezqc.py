@@ -29,6 +29,7 @@ def main():
     ███████╗███████╗╚██████╔╝╚██████╗
     ╚══════╝╚══════╝ ╚══▀▀═╝  ╚═════╝ made by Tinger Shi & Sky Li
     '''
+    
     print(logo)
 
     # Create the argparse object and define the arguments

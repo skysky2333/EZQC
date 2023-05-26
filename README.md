@@ -64,6 +64,7 @@ EZQC requires Python 3.x and depends on the following packages, which will be in
 - numpy
 - matplotlib
 - pandas
+- scipy
 
 ## Usage
 

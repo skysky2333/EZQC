@@ -50,6 +50,6 @@ def plot_adapter_content(adapter_percentages):
     plt.savefig("ezqc_output/adaptor_content_plot.png")
     #plt.show()
 
-def run_ac9(seqs):
+def run_ac8(seqs):
     adapter_percentages = calculate_adapter_content(seqs, adapters)
     plot_adapter_content(adapter_percentages)

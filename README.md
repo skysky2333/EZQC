@@ -22,9 +22,8 @@ EZQC is capable of performing the following analyses:
 4. Per sequence GC content
 5. Per base N content
 6. Sequence Length Distribution
-7. Sequence Duplication Levels
-8. Overrepresented sequences
-9. Adapter Content
+7. Overrepresented sequences
+8. Adapter Content
 
 ## Quick Start Guide
 
@@ -90,9 +89,8 @@ Here's a brief description of the analyses performed by EZQC:
 4. **Per Sequence GC Content**: Calculates the GC content in each sequence.
 5. **Per Base N Content**: Identifies sequences with a high proportion of unknown (N) bases.
 6. **Sequence Length Distribution**: Provides a histogram showing the distribution of sequence lengths.
-7. **Sequence Duplication Levels**: Shows the relative level of sequence duplication.
-8. **Overrepresented sequences**: Identifies any sequences that occur more often than expected.
-9. **Adapter Content**: Detects the presence of adapter sequences in the reads.
+7. **Overrepresented sequences**: Identifies any sequences that occur more often than expected.
+8. **Adapter Content**: Detects the presence of adapter sequences in the reads.
 
 ## Contributing
 

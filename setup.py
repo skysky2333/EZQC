@@ -10,6 +10,7 @@ setup(
         'numpy',
         'matplotlib',
         'pandas',
+        'scipy',
     ],
     entry_points={
         'console_scripts': [

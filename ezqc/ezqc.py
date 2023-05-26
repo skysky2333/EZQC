@@ -21,6 +21,16 @@ def parse_fastq_file(file_obj):
         yield header, sequence, quality_str
 
 def main():
+    logo = r'''
+    ███████╗███████╗ ██████╗  ██████╗
+    ██╔════╝╚══███╔╝██╔═══██╗██╔════╝
+    █████╗    ███╔╝ ██║   ██║██║     
+    ██╔══╝   ███╔╝  ██║▄▄ ██║██║     
+    ███████╗███████╗╚██████╔╝╚██████╗
+    ╚══════╝╚══════╝ ╚══▀▀═╝  ╚═════╝ made by Tinger Shi & Sky Li
+    '''
+    print(logo)
+
     # Create the argparse object and define the arguments
     parser = argparse.ArgumentParser(description="EZQC FastQ Quality Analyzer")
     parser.add_argument('seqs', metavar='SEQ', nargs='+', help='input .fastq file(s)')

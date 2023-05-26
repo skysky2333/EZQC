@@ -11,6 +11,7 @@ setup(
         'matplotlib',
         'pandas',
         'scipy',
+        'Bio',
     ],
     entry_points={
         'console_scripts': [

@@ -1,5 +1,5 @@
 # EZQC: Easy Quality Control for FastQ Files
-![Build Status](https://github.com/skysky2333/EZQC/workflows/test-package/badge.svg)
+[![Python package](https://github.com/skysky2333/EZQC/actions/workflows/test-package.yml/badge.svg)](https://github.com/skysky2333/EZQC/actions/workflows/test-package.yml)
 ![test Gif](tests/test1.gif)
 
 ## Table of Contents

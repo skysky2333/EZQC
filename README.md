@@ -1,4 +1,5 @@
 # EZQC: Easy Quality Control for FastQ Files
+![Build Status](https://github.com/skysky2333/EZQC/workflows/test-package/badge.svg)
 ![test Gif](tests/test1.gif)
 
 ## Table of Contents

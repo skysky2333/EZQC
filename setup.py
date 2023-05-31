@@ -1,11 +1,15 @@
 from setuptools import setup, find_packages
 
+with open('README.md', 'r', encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
     name='ezqc',
     version='0.1',
     author='Tinger Shi & Sky Li',
     description='EZQC is a streamlined, terminal-based alternative to FastQC.',
-    packages=find_packages(),
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     install_requires=[
         # Add your project dependencies here
         'numpy',

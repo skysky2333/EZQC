@@ -1,4 +1,4 @@
-[![Python package](https://github.com/skysky2333/EZQC/actions/workflows/test-package.yml/badge.svg)](https://github.com/skysky2333/EZQC/actions/workflows/test-package.yml)
+[![EZQC Main Tests](https://github.com/skysky2333/EZQC/actions/workflows/ezqc_main_test.yml/badge.svg)](https://github.com/skysky2333/EZQC/actions/workflows/ezqc_main_test.yml)
 # EZQC: Easy Quality Control for FastQ Files
 <p align="center">
   <img src="tests/test1.gif" alt="test Gif" width="100%">

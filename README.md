@@ -44,7 +44,7 @@ You can install EZQC using pip:
 pip install ezqc
 ```
 
-Additionally, you can compile EZQC from source using the provided `setup.py` script. Following steps:
+Alternatively, you can compile the latest version of EZQC from source using the provided `setup.py` script. Following steps:
 
 1. Clone the repository:
 

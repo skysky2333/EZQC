@@ -15,26 +15,15 @@ def test_addition():
     assert 2 + 2 == 4
 
 
-def parse_fastq_file(file_obj):
-    while True:
-        header = file_obj.readline().strip()
-        if not header:
-            break
-        sequence = file_obj.readline().strip()
-        file_obj.readline()
-        quality_str = file_obj.readline().strip()
-        yield header, sequence, quality_str
-
-# logo = r'''
-# ███████╗███████╗ ██████╗  ██████╗
-# ██╔════╝╚══███╔╝██╔═══██╗██╔════╝
-# █████╗    ███╔╝ ██║   ██║██║     
-# ██╔══╝   ███╔╝  ██║▄▄ ██║██║     
-# ███████╗███████╗╚██████╔╝╚██████╗
-# ╚══════╝╚══════╝ ╚══▀▀═╝  ╚═════╝ made by Tinger Shi & Sky Li
-# '''
-
-# print(logo)
+# def parse_fastq_file(file_obj):
+#     while True:
+#         header = file_obj.readline().strip()
+#         if not header:
+#             break
+#         sequence = file_obj.readline().strip()
+#         file_obj.readline()
+#         quality_str = file_obj.readline().strip()
+#         yield header, sequence, quality_str
 
 # # Create the argparse object and define the arguments
 # parser = argparse.ArgumentParser(description="EZQC FastQ Quality Analyzer")
@@ -72,7 +61,7 @@ def parse_fastq_file(file_obj):
 #             headers.append(header)
 #             sequences.append(sequence)
 #             quality_strings.append(quality_str)
-#     # average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
+    # average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
 
 # def function1():
     

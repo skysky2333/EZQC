@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name='ezqc',
-    version='0.1',
+    version='0.2',
     author='Tinger Shi & Sky Li',
     description='EZQC is a streamlined, terminal-based alternative to FastQC.',
     long_description=long_description,

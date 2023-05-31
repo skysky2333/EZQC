@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 ezqc_output/
+
+.DS_Store

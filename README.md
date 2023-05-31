@@ -39,7 +39,12 @@ EZQC is capable of performing the following analyses:
 
 ## Installation
 
-You can install EZQC from source using the provided `setup.py` script. Here are the steps:
+You can install EZQC using pip:
+```
+pip install ezqc
+```
+
+Additionally, you can compile EZQC from source using the provided `setup.py` script. Following steps:
 
 1. Clone the repository:
 
@@ -56,10 +61,10 @@ cd ezqc
 3. Install the package:
 
 ```
-pip3 install .
+pip install .
 ```
 
-Or install directly:
+Or
 
 ```
 python setup.py install

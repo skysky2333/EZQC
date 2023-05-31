@@ -1,5 +1,6 @@
 [![EZQC Main Tests](https://github.com/skysky2333/EZQC/actions/workflows/ezqc_main_test.yml/badge.svg)](https://github.com/skysky2333/EZQC/actions/workflows/ezqc_main_test.yml)
-[![PyPI](https://github.com/skysky2333/EZQC/actions/workflows/python-publish.yml/badge.svg)](https://github.com/skysky2333/EZQC/actions/workflows/python-publish.yml)
+[![PyPI](https://img.shields.io/pypi/v/ezqc)](https://pypi.org/project/ezqc/)
+
 
 # EZQC: Easy Quality Control for FastQ Files
 <p align="center">

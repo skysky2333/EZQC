@@ -1,29 +1,31 @@
-# import argparse
-# import os
-# import numpy as np
-# from pbsq1 import run_pbsq1
-# from psqs2 import run_psqs2
-# from pbsc3 import run_pbsc3
-# from psgc4 import run_psgc4
-# from pbnc5 import run_pbnc5
-# from sld6 import run_sld6
-# from os7 import run_os7
-# from ac8 import run_ac8
+import pytest
+import argparse
+import os
+import numpy as np
+from ezqc.pbsq1 import run_pbsq1
+from ezqc.psqs2 import run_psqs2
+from ezqc.pbsc3 import run_pbsc3
+from ezqc.psgc4 import run_psgc4
+from ezqc.pbnc5 import run_pbnc5
+from ezqc.sld6 import run_sld6
+from ezqc.os7 import run_os7
+from ezqc.ac8 import run_ac8
 
 
 def test_addition():
     assert 2 + 2 == 4
 
 
-# def parse_fastq_file(file_obj):
-#     while True:
-#         header = file_obj.readline().strip()
-#         if not header:
-#             break
-#         sequence = file_obj.readline().strip()
-#         file_obj.readline()
-#         quality_str = file_obj.readline().strip()
-#         yield header, sequence, quality_str
+# with open ("tests/SRR020192.fastq",'r') as file_obj:
+#     header = file_obj.readline().strip()
+#     if not header:
+#         break
+#     sequence = file_obj.readline().strip()
+#     file_obj.readline()
+#     quality_str = file_obj.readline().strip()
+#     yield header, sequence, quality_str
+
+# file.close()
 
 # # Create the argparse object and define the arguments
 # parser = argparse.ArgumentParser(description="EZQC FastQ Quality Analyzer")

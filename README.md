@@ -93,6 +93,7 @@ Replace `<fastq file(s)>` with the path(s) to your FastQ files. If you want to a
 ```
 ezqc file1.fastq file2.fastq file3.fastq
 ```
+Use `-o` or `--output` to set the output directory.
 
 ## Analysis Methods
 

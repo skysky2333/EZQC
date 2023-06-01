@@ -162,3 +162,5 @@ cython_debug/
 ezqc_output/
 
 .DS_Store
+
+tests/SRR24755420.fastq

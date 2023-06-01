@@ -24,6 +24,19 @@ headers = []
 sequences = []
 quality_strings = []
 
+directory_name = "ezqc_output"
+# Get the current working directory
+current_directory = os.getcwd()
+# Create a path for the new directory
+new_directory_path = os.path.join(current_directory, directory_name)
+
+# Create the directory if it doesn't already exist
+if not os.path.exists(new_directory_path):
+    os.makedirs(new_directory_path)
+    print(f"Directory '{directory_name}' created successfully!")
+else:
+    print(f"Directory '{directory_name}' already exists.")
+
 with open("tests/SRR020192.fastq", 'r') as fastq_file:
      for header, sequence, quality_str in parse_fastq_file(fastq_file):
         headers.append(header)

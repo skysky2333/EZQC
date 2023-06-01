@@ -35,11 +35,12 @@ def main():
     # Create the argparse object and define the arguments
     parser = argparse.ArgumentParser(description="EZQC FastQ Quality Analyzer")
     parser.add_argument('seqs', metavar='SEQ', nargs='+', help='input .fastq file(s)')
+    parser.add_argument('-o', '--output', default='ezqc_output', help='output directory (default: ezqc_output)')
 
     # Parse the command-line arguments 
     args = parser.parse_args()
 
-    directory_name = "ezqc_output"
+    directory_name = args.output
     # Get the current working directory
     current_directory = os.getcwd()
     # Create a path for the new directory
@@ -55,9 +56,22 @@ def main():
     total_num = 0
     pass_num = 0
 
+
     # Process each .fastq file
     for file_path in args.seqs:
         print(f"Processing file: {file_path}")
+       
+        file_base_name = os.path.basename(file_path)
+        file_base_name = os.path.splitext(file_base_name)[0]
+        sub_directory_path = os.path.join(new_directory_path, file_base_name)
+
+        # Create the directory if it doesn't already exist
+        if not os.path.exists(sub_directory_path):
+            os.makedirs(sub_directory_path)
+            print(f"Directory '{sub_directory_path}' created successfully!")
+        else:
+            print(f"Directory '{sub_directory_path}' already exists.")
+
         total_num += 1
         headers = []
         sequences = []
@@ -70,16 +84,28 @@ def main():
                 quality_strings.append(quality_str)
         # average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
 
-    results = [
-        run_pbsq1(quality_strings),
-        run_psqs2(quality_strings),
-        run_pbsc3(sequences),
-        run_psgc4(sequences),
-        run_pbnc5(sequences),
-        run_sld6(sequences),
-        run_os7(sequences),
-        run_ac8(sequences)
-    ]
+        results = [
+            run_pbsq1(quality_strings),
+            run_psqs2(quality_strings),
+            run_pbsc3(sequences),
+            run_psgc4(sequences),
+            run_pbnc5(sequences),
+            run_sld6(sequences),
+            run_os7(sequences),
+            run_ac8(sequences)
+        ]
+
+        # results = [
+        #     run_pbsq1(quality_strings,sub_directory_path),
+        #     run_psqs2(quality_strings,sub_directory_path),
+        #     run_pbsc3(sequences,sub_directory_path),
+        #     run_psgc4(sequences,sub_directory_path),
+        #     run_pbnc5(sequences,sub_directory_path),
+        #     run_sld6(sequences,sub_directory_path),
+        #     run_os7(sequences,sub_directory_path),
+        #     run_ac8(sequences,sub_directory_path)
+        # ]
+
     if all(results): 
         pass_num += 1
     print(f"All fastq file analyzied, {pass_num}/{total_num} passed all tests.")

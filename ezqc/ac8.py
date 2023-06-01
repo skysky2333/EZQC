@@ -10,14 +10,16 @@ adapters = {
 
 def calculate_adapter_content(sequences, adapters):
 
-    counts = {name: [0]*len(seq) for name, seq in adapters.items()}
+    counts = {name: [0]*len(sequences) for name, seq in adapters.items()}
 
+    curr = 0
     for seq in sequences:
         for name, adapter in adapters.items():
             if len(seq) >= len(adapter):
                 for i in range(len(seq) - len(adapter) + 1):
                     if seq[i:i+len(adapter)] == adapter:
-                        counts[name][i] += 1
+                        counts[name][curr] += 1
+        curr += 1
 
     percentages = {name: [count/len(sequences)*100 for count in count_list] for name, count_list in counts.items()}
 

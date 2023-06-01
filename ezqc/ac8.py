@@ -31,7 +31,7 @@ def calculate_adapter_content(sequences, adapters):
     if (all_pass):
         print_color(f'O | No adaptor is present in more than 5% of all reads','green')
 
-    return percentages
+    return percentages, all_pass
 
 def plot_adapter_content(adapter_percentages):
     plt.figure()
@@ -51,5 +51,6 @@ def plot_adapter_content(adapter_percentages):
     #plt.show()
 
 def run_ac8(seqs):
-    adapter_percentages = calculate_adapter_content(seqs, adapters)
+    adapter_percentages, all_pass = calculate_adapter_content(seqs, adapters)
     plot_adapter_content(adapter_percentages)
+    return all_pass

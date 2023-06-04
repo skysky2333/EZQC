@@ -37,9 +37,9 @@ def run_psqs2(quality_strings):
 
 
     # print(proportion_low_quality)
-    if (proportion_low_quality > 0.01):
-        print_color(f"X | Per sequence quality score NOT pass. Because proportion of low quality is {100*proportion_low_quality:.2f} %, which is more than 1%","red")
+    if (proportion_low_quality >= 0.05):
+        print_color(f"X | Per sequence quality score NOT pass. Because proportion of low quality is {100*proportion_low_quality:.2f} %, which is more than 5%","red")
         return False
     else:
-        print_color(f"O | Per sequence quality pass. Proportion of low quality is {100*proportion_low_quality:.2f} %, which is less than 1%","green")
+        print_color(f"O | Per sequence quality pass. Proportion of low quality is {100*proportion_low_quality:.2f} %, which is less than 5%","green")
         return True

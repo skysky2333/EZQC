@@ -1,11 +1,11 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from .color_print import print_color
-from collections import Counter
+# from collections import Counter
 
-def calculate_sequence_lengths(sequences):
-    sequence_lengths = [len(seq) for seq in sequences]
+# def calculate_sequence_lengths(sequences):
+#     sequence_lengths = [len(seq) for seq in sequences]
     
-    return Counter(sequence_lengths)
+#     return Counter(sequence_lengths)
 
 def detect_warnings_failures(sequences):
     sequence_lengths = [len(seq) for seq in sequences]
@@ -20,20 +20,51 @@ def detect_warnings_failures(sequences):
         print_color("O | Lengths of Sequences are good","green")
         return True
 
-def plot_sequence_lengths(sequence_lengths):
-    plt.figure()
-    plt.bar(sequence_lengths.keys(), sequence_lengths.values())
-    plt.title("Sequence Length Distribution")
-    plt.xlabel("Sequence Length")
-    plt.ylabel("Number of Sequences")
-    # Save and/or display the plot
-    plt.savefig("ezqc_output/Sequence_Length_Distribution.png")
-    # plt.show()
+# def plot_sequence_lengths(sequence_lengths):
+#     plt.figure()
+#     plt.bar(sequence_lengths.keys(), sequence_lengths.values())
+#     plt.title("Sequence Length Distribution")
+#     plt.xlabel("Sequence Length")
+#     plt.ylabel("Number of Sequences")
+#     # Save and/or display the plot
+#     plt.savefig("ezqc_output/Sequence_Length_Distribution.png")
+#     # plt.show()
+
+# def run_sld6(sequences):
+#     # print("running function 6: Sequence Length Distribution")
+#     sequence_lengths = calculate_sequence_lengths(sequences)
+#     plot_sequence_lengths(sequence_lengths)
+#     return detect_warnings_failures(sequences)
+
+
+
+# version 2
+import matplotlib.pyplot as plt
+from collections import Counter
 
 def run_sld6(sequences):
-    # print("running function 6: Sequence Length Distribution")
-    sequence_lengths = calculate_sequence_lengths(sequences)
-    plot_sequence_lengths(sequence_lengths)
+    sequence_lengths = [len(seq) for seq in sequences]
+    length_freq = Counter(sequence_lengths)
+    lengths = list(length_freq.keys())
+    freqs = list(length_freq.values())
+
+    # plt.figure(figsize=(10,6))
+    # plt.plot(lengths, freqs, marker='o')
+    # plt.title('Distribution of sequence lengths over all sequences')
+    # plt.xlabel('Sequence length in base pairs')
+    # plt.ylabel('Count of sequences')
+    # plt.grid(True)
+
+    # plt.savefig("ezqc_output/Sequence_Length_Distribution.png")
+    # # plt.show() 
+
+    # plt.figure(figsize=(10,6))
+    plt.figure()
+    plt.bar(lengths, freqs)
+    plt.title('Distribution of sequence lengths over all sequences')
+    plt.xlabel('Sequence length(bp)')
+    plt.ylabel('Count of sequences')
+    plt.savefig("ezqc_output/Sequence_Length_Distribution.png")
+    # plt.show()
     return detect_warnings_failures(sequences)
 
-    

@@ -71,7 +71,7 @@ else:
 # def test2_function1_FALSE():
 #     assert run_pbsq1(quality_strings) == False
 # def test2_function2_FAlSE():
-#     assert run_psqs2(quality_strings) == False
+#     assert run_psqs2(quality_strings) == TRUE
 # def test2_function3_FALSE():
 #     assert run_pbsc3(sequences) == False
 # def test2_function4_FALSE():
@@ -81,6 +81,7 @@ else:
 # def test2_function6_TRUE():
 #     assert run_sld6(sequences) == True
 # def test2_function7_TRUE():
+# # fastqc says false.
 #     assert run_os7(sequences) == True
 # def test2_function8_TURE():
 #     assert run_ac8(sequences) == True

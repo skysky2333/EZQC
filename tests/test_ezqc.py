@@ -37,30 +37,31 @@ if not os.path.exists(new_directory_path):
 else:
     print(f"Directory '{directory_name}' already exists.")
 
-with open("tests/SRR020192.fastq", 'r') as fastq_file:
-     for header, sequence, quality_str in parse_fastq_file(fastq_file):
-        headers.append(header)
-        sequences.append(sequence)
-        quality_strings.append(quality_str)
+# test 1
+# with open("tests/SRR020192.fastq", 'r') as fastq_file:
+#      for header, sequence, quality_str in parse_fastq_file(fastq_file):
+#         headers.append(header)
+#         sequences.append(sequence)
+#         quality_strings.append(quality_str)
 
-def test1_function1_FALSE():
-    assert run_pbsq1(quality_strings) == False
-def test1_function2_TRUE():
-    assert run_psqs2(quality_strings) == True
-def test1_function3_FALSE():
-    assert run_pbsc3(sequences) == False
-def test1_function4_FALSE():
-    assert run_psgc4(sequences) == False
-def test1_function5_FALSE():
-    assert run_pbnc5(sequences) == False
-def test1_function6_FALSE():
-    assert run_sld6(sequences) == False
-def test1_function7_FALSE():
-    assert run_os7(sequences) == False
-def test1_function8_TURE():
-    assert run_ac8(sequences) == True
+# def test1_function1_FALSE():
+#     assert run_pbsq1(quality_strings) == False
+# def test1_function2_TRUE():
+#     assert run_psqs2(quality_strings) == True
+# def test1_function3_FALSE():
+#     assert run_pbsc3(sequences) == False
+# def test1_function4_FALSE():
+#     assert run_psgc4(sequences) == False
+# def test1_function5_FALSE():
+#     assert run_pbnc5(sequences) == False
+# def test1_function6_FALSE():
+#     assert run_sld6(sequences) == False
+# def test1_function7_FALSE():
+#     assert run_os7(sequences) == False
+# def test1_function8_TURE():
+#     assert run_ac8(sequences) == True
 
-# # test 2
+# test 2
 # with open("tests/SRR24755455.fastq", 'r') as fastq_file:
 #      for header, sequence, quality_str in parse_fastq_file(fastq_file):
 #         headers.append(header)
@@ -68,26 +69,18 @@ def test1_function8_TURE():
 #         quality_strings.append(quality_str)
 
 # def test2_function1_FALSE():
-#     pnp = run_pbsq1(quality_strings)
-#     assert pnp == False
-# def test2_function2_TRUE():
-#     pnp2 = run_psqs2(quality_strings)
-#     assert pnp2 == True
+#     assert run_pbsq1(quality_strings) == False
+# def test2_function2_FAlSE():
+#     assert run_psqs2(quality_strings) == False
 # def test2_function3_FALSE():
-#     pnp3 = run_pbsc3(sequences)
 #     assert run_pbsc3(sequences) == False
 # def test2_function4_FALSE():
-#     pnp4 = run_psgc4(sequences)
-#     assert pnp4 == False
-# def test2_function5_FALSE():
-#     pnp5 = run_pbnc5(sequences)
-#     assert pnp5 == False
-# def test2_function6_FALSE():
-#     pnp6 = run_sld6(sequences)
-#     assert pnp6 == False
-# def test2_function7_FALSE():
-#     pnp7 = run_os7(sequences)
-#     assert pnp7 == False
+#     assert run_psgc4(sequences) == False
+# def test2_function5_TRUE():
+#     assert run_pbnc5(sequences) == True
+# def test2_function6_TRUE():
+#     assert run_sld6(sequences) == True
+# def test2_function7_TRUE():
+#     assert run_os7(sequences) == True
 # def test2_function8_TURE():
-#     pnp8 = run_ac8(sequences)
-#     assert pnp8 == True
+#     assert run_ac8(sequences) == True

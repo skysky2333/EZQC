@@ -3,6 +3,12 @@ import csv
 from .color_print import print_color
 
 def run_os7(dna_sequences):
+    # Track only the first 100,000 sequences
+    dna_sequences = dna_sequences[:100000] if len(dna_sequences)>100000 else dna_sequences
+
+    # Truncate sequences over 75bp to 50bp for analysis
+    dna_sequences = [seq[:50] if len(seq) > 75 else seq for seq in dna_sequences]
+
     total_count = len(dna_sequences)
     
     counter = collections.Counter(dna_sequences)

@@ -9,7 +9,7 @@ def mean_qual_score(qual_string):
     qual_scores = phred33_to_q(qual_string)
     return np.mean(qual_scores)
 
-def run_psqs2(quality_strings):
+def run_psqs2(quality_strings,sub_directory_path):
 # Calculate mean quality scores for each sequence
     mean_qual_scores = [mean_qual_score(qual_string) for qual_string in quality_strings]
 
@@ -32,7 +32,7 @@ def run_psqs2(quality_strings):
     plt.grid(True, linestyle='--', alpha=0.5)
 
     # Save and/or display the plot
-    plt.savefig("ezqc_output/per_sequence_quality_scores.png")
+    plt.savefig(f"{sub_directory_path}/per_sequence_quality_scores.png")
     # plt.show()
 
 

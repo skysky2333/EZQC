@@ -23,7 +23,7 @@ def detect_warnings_failures(gc_contents,sequences):
         print_color("O | The sum of the deviations from the normal distribution are good","green")
         return True
 
-def run_psgc4(sequences):
+def run_psgc4(sequences,sub_directory_path):
     gc_contents = []
     # Iterate through each sequence
     for seq in sequences:
@@ -49,7 +49,7 @@ def run_psgc4(sequences):
     plt.legend(loc='upper right')
     plt.grid(True)
     # Save and/or display the all the plots
-    plt.savefig("ezqc_output/per_sequence_GC_content.png")
+    plt.savefig(f"{sub_directory_path}/per_sequence_GC_content.png")
     # plt.show()
 
     return detect_warnings_failures(gc_contents,sequences)

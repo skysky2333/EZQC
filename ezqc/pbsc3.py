@@ -36,7 +36,7 @@ def per_base_sequence_content(seqs):
 
 
 
-def plot_base_content(base_content):
+def plot_base_content(base_content,sub_directory_path):
     # Create the x-values for our plot (the position in the read)
     x_values = list(range(1, len(base_content['A'])+1))
 
@@ -53,12 +53,12 @@ def plot_base_content(base_content):
     plt.legend()
 
     # Save and/or display the plot
-    plt.savefig("ezqc_output/per_base_sequence_content_plot.png")
+    plt.savefig(f"{sub_directory_path}/per_base_sequence_content_plot.png")
     #plt.show()
 
-def run_pbsc3(seqs):
+def run_pbsc3(seqs,sub_directory_path):
     content, greater_10, greater_20 = per_base_sequence_content(seqs)
-    plot_base_content(content)
+    plot_base_content(content,sub_directory_path)
     if (greater_20>0):
         print_color(f"X | Per base sequence content NOT pass. {greater_20} positions with greater than 20% differences", "red")
         return False

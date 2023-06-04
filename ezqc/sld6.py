@@ -16,7 +16,7 @@ def detect_warnings_failures(sequences):
         return True
 
 # version 2
-def run_sld6(sequences):
+def run_sld6(sequences,sub_directory_path):
     sequence_lengths = [len(seq) for seq in sequences]
     length_freq = Counter(sequence_lengths)
     
@@ -39,7 +39,7 @@ def run_sld6(sequences):
     plt.xlabel('Sequence length(bp)')
     plt.ylabel('Count of sequences')
     plt.grid(True)
-    plt.savefig("ezqc_output/Sequence_Length_Distribution.png")
+    plt.savefig(f"{sub_directory_path}/Sequence_Length_Distribution.png")
     # plt.show()
 
     return detect_warnings_failures(sequences)

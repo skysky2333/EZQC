@@ -45,7 +45,7 @@ def calculate_quality_scores(quality_strings):
     
     return quality_scores, mask
 
-def run_pbsq1(quality_strings):
+def run_pbsq1(quality_strings,sub_directory_path):
     # Convert quality strings to quality scores 
     quality_scores, mask = calculate_quality_scores(quality_strings)
 
@@ -71,7 +71,7 @@ def run_pbsq1(quality_strings):
     plt.yticks(np.arange(0, np.max(average_quality_scores)+1, 2))
     plt.grid(True)
     plt.legend()
-    plt.savefig("ezqc_output/per_base_sequence_quality_plot.png")
+    plt.savefig(f"{sub_directory_path}/per_base_sequence_quality_plot.png")
     # plt.show()
 
     avg_score = np.average(average_quality_scores)

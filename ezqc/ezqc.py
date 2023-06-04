@@ -84,27 +84,27 @@ def main():
                 quality_strings.append(quality_str)
         # average_length_each_sequence = int(np.average([len(x) for x in quality_strings]))
 
-        results = [
-            run_pbsq1(quality_strings),
-            run_psqs2(quality_strings),
-            run_pbsc3(sequences),
-            run_psgc4(sequences),
-            run_pbnc5(sequences),
-            run_sld6(sequences),
-            run_os7(sequences),
-            run_ac8(sequences)
-        ]
-
         # results = [
-        #     run_pbsq1(quality_strings,sub_directory_path),
-        #     run_psqs2(quality_strings,sub_directory_path),
-        #     run_pbsc3(sequences,sub_directory_path),
-        #     run_psgc4(sequences,sub_directory_path),
-        #     run_pbnc5(sequences,sub_directory_path),
-        #     run_sld6(sequences,sub_directory_path),
-        #     run_os7(sequences,sub_directory_path),
-        #     run_ac8(sequences,sub_directory_path)
+        #     run_pbsq1(quality_strings),
+        #     run_psqs2(quality_strings),
+        #     run_pbsc3(sequences),
+        #     run_psgc4(sequences),
+        #     run_pbnc5(sequences),
+        #     run_sld6(sequences),
+        #     run_os7(sequences),
+        #     run_ac8(sequences)
         # ]
+
+        results = [
+            run_pbsq1(quality_strings,sub_directory_path),
+            run_psqs2(quality_strings,sub_directory_path),
+            run_pbsc3(sequences,sub_directory_path),
+            run_psgc4(sequences,sub_directory_path),
+            run_pbnc5(sequences,sub_directory_path),
+            run_sld6(sequences,sub_directory_path),
+            run_os7(sequences,sub_directory_path),
+            run_ac8(sequences,sub_directory_path)
+        ]
 
     if all(results): 
         pass_num += 1

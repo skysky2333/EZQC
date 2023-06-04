@@ -36,7 +36,7 @@ def calculate_adapter_content(sequences, adapters):
 
     return percentages, all_pass
 
-def plot_adapter_content(adapter_percentages):
+def plot_adapter_content(adapter_percentages,sub_directory_path):
     plt.figure()
     positions = list(range(1, max(map(len, adapter_percentages.values())) + 1))
 
@@ -50,10 +50,10 @@ def plot_adapter_content(adapter_percentages):
     plt.legend()
 
     # Save and/or display the plot
-    plt.savefig("ezqc_output/adaptor_content_plot.png")
+    plt.savefig(f"{sub_directory_path}/adaptor_content_plot.png")
     #plt.show()
 
-def run_ac8(seqs):
+def run_ac8(seqs,sub_directory_path):
     adapter_percentages, all_pass = calculate_adapter_content(seqs, adapters)
-    plot_adapter_content(adapter_percentages)
+    plot_adapter_content(adapter_percentages,sub_directory_path)
     return all_pass

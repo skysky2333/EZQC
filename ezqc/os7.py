@@ -2,7 +2,7 @@ import collections
 import csv
 from .color_print import print_color
 
-def run_os7(dna_sequences):
+def run_os7(dna_sequences,sub_directory_path):
     # Track only the first 100,000 sequences
     dna_sequences = dna_sequences[:100000] if len(dna_sequences)>100000 else dna_sequences
 
@@ -29,7 +29,7 @@ def run_os7(dna_sequences):
             sequences_exceeding_0_1_percent += 1
             table.append([sequence, count, percentage])
 
-    with open('ezqc_output/overrepresented_sequences.csv', 'w', newline='') as f:
+    with open(f"{sub_directory_path}/overrepresented_sequences.csv", 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(["Sequence", "Count", "Percentage"])
         writer.writerows(table)

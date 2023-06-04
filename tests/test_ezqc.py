@@ -37,51 +37,51 @@ if not os.path.exists(new_directory_path):
 else:
     print(f"Directory '{directory_name}' already exists.")
 
+
 # test 1
-# with open("tests/SRR020192.fastq", 'r') as fastq_file:
-#      for header, sequence, quality_str in parse_fastq_file(fastq_file):
-#         headers.append(header)
-#         sequences.append(sequence)
-#         quality_strings.append(quality_str)
+with open("tests/SRR020192.fastq", 'r') as fastq_file:
+     for header, sequence, quality_str in parse_fastq_file(fastq_file):
+        headers.append(header)
+        sequences.append(sequence)
+        quality_strings.append(quality_str)
 
-# def test1_function1_FALSE():
-#     assert run_pbsq1(quality_strings) == False
-# def test1_function2_TRUE():
-#     assert run_psqs2(quality_strings) == True
-# def test1_function3_FALSE():
-#     assert run_pbsc3(sequences) == False
-# def test1_function4_FALSE():
-#     assert run_psgc4(sequences) == False
-# def test1_function5_FALSE():
-#     assert run_pbnc5(sequences) == False
-# def test1_function6_FALSE():
-#     assert run_sld6(sequences) == False
-# def test1_function7_FALSE():
-#     assert run_os7(sequences) == False
-# def test1_function8_TURE():
-#     assert run_ac8(sequences) == True
+def test1_function1_FALSE():
+    assert run_pbsq1(quality_strings,directory_name) == False
+def test1_function2_TRUE():
+    assert run_psqs2(quality_strings,directory_name) == True
+def test1_function3_FALSE():
+    assert run_pbsc3(sequences,directory_name) == False
+def test1_function4_FALSE():
+    assert run_psgc4(sequences,directory_name) == False
+def test1_function5_TRUE():
+    assert run_pbnc5(sequences,directory_name) == True
+def test1_function6_FALSE():
+    assert run_sld6(sequences,directory_name) == False
+def test1_function7_FALSE():
+    assert run_os7(sequences,directory_name) == False
+def test1_function8_TURE():
+    assert run_ac8(sequences,directory_name) == True
 
-# test 2
-# with open("tests/SRR24755455.fastq", 'r') as fastq_file:
-#      for header, sequence, quality_str in parse_fastq_file(fastq_file):
-#         headers.append(header)
-#         sequences.append(sequence)
-#         quality_strings.append(quality_str)
+#test 2
+with open("tests/SRR24755455.fastq", 'r') as fastq_file:
+     for header, sequence, quality_str in parse_fastq_file(fastq_file):
+        headers.append(header)
+        sequences.append(sequence)
+        quality_strings.append(quality_str)
 
-# def test2_function1_FALSE():
-#     assert run_pbsq1(quality_strings) == False
-# def test2_function2_FAlSE():
-#     assert run_psqs2(quality_strings) == TRUE
-# def test2_function3_FALSE():
-#     assert run_pbsc3(sequences) == False
-# def test2_function4_FALSE():
-#     assert run_psgc4(sequences) == False
-# def test2_function5_TRUE():
-#     assert run_pbnc5(sequences) == True
-# def test2_function6_TRUE():
-#     assert run_sld6(sequences) == True
-# def test2_function7_TRUE():
-# # fastqc says false.
-#     assert run_os7(sequences) == True
-# def test2_function8_TURE():
-#     assert run_ac8(sequences) == True
+def test2_function1_FALSE():
+    assert run_pbsq1(quality_strings,directory_name) == False
+def test2_function2_TRUE():
+    assert run_psqs2(quality_strings,directory_name) == True
+def test2_function3_FALSE():
+    assert run_pbsc3(sequences,directory_name) == False
+def test2_function4_FALSE():
+    assert run_psgc4(sequences,directory_name) == False
+def test2_function5_TRUE():
+    assert run_pbnc5(sequences,directory_name) == True
+def test2_function6_FALSE():
+    assert run_sld6(sequences,directory_name) == False
+def test2_function7_FALSE():
+    assert run_os7(sequences,directory_name) == False
+def test2_function8_TURE():
+    assert run_ac8(sequences,directory_name) == True

@@ -32,7 +32,6 @@ def run_sld6(sequences):
     lengths, freqs = zip(*sorted(length_freq.items()))
     # lengths = list(length_freq.keys())
     # freqs = list(length_freq.values())
-    print('Frequencies:', freqs)
     plt.figure(figsize=(10,6))
     plt.plot(lengths, freqs, marker='o')
     plt.title('Distribution of sequence lengths over all sequences')

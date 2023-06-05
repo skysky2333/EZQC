@@ -60,6 +60,7 @@ def run_pbsq1(quality_strings,sub_directory_path):
 
     # Create the plot
     positions = np.arange(1, max_read_length+1)
+    plt.figure()
     plt.plot(positions, average_quality_scores, label='Mean')
     plt.plot(positions, lower_quartile_scores, label='Lower quartile', linestyle='--')
     plt.plot(positions, upper_quartile_scores, label='Upper quartile', linestyle='--')

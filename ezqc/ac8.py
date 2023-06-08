@@ -49,7 +49,6 @@ def plot_adapter_content(adapter_percentages,sub_directory_path):
     plt.title('Adapter Content')
     plt.legend()
 
-    # Save and/or display the plot
     plt.savefig(f"{sub_directory_path}/adaptor_content_plot.png")
     #plt.show()
 

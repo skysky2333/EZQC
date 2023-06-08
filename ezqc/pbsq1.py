@@ -46,10 +46,8 @@ def calculate_quality_scores(quality_strings):
     return quality_scores, mask
 
 def run_pbsq1(quality_strings,sub_directory_path):
-    # Convert quality strings to quality scores 
     quality_scores, mask = calculate_quality_scores(quality_strings)
 
-    # Calculate the number of reads and the maximum length of the reads
     max_read_length = quality_scores.shape[1]
 
     # Calculate average, lower quartile, and upper quartile quality scores for each base position

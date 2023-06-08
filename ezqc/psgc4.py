@@ -31,7 +31,6 @@ def run_psgc4(sequences,sub_directory_path):
         count_gc = sum(base in "GC" for base in seq)
         gc_percent = 100 * count_gc / len(seq)
 
-        # Append the GC content to the list
         gc_contents.append(gc_percent)
         
     # plot GC distribution over all sequences
@@ -48,7 +47,6 @@ def run_psgc4(sequences,sub_directory_path):
     plt.ylabel("Number of sequences")
     plt.legend(loc='upper right')
     plt.grid(True)
-    # Save and/or display the all the plots
     plt.savefig(f"{sub_directory_path}/per_sequence_GC_content.png")
     # plt.show()
 

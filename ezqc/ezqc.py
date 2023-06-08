@@ -41,9 +41,7 @@ def main():
     args = parser.parse_args()
 
     directory_name = args.output
-    # Get the current working directory
     current_directory = os.getcwd()
-    # Create a path for the new directory
     new_directory_path = os.path.join(current_directory, directory_name)
 
     # Create the directory if it doesn't already exist

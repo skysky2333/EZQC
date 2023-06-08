@@ -5,15 +5,12 @@ def per_base_n_content(seqs):
     greater_20 = 0
     greater_10 = 0
     
-    # Initialize a list to hold our counts
     n_content = []
 
-    # Determine the length of the longest sequence
     max_length = max(len(seq) for seq in seqs)
 
     # Loop over each position up to the maximum length
     for i in range(max_length):
-        # Initialize a count for 'N' at this position
         n_count = 0
         
         # Loop over each sequence and count the 'N's at this position
@@ -35,19 +32,16 @@ def plot_n_content(n_content,sub_directory_path):
     # Create the x-values for our plot (the position in the read)
     x_values = list(range(1, len(n_content)+1))
 
-    # Create a new figure
     plt.figure()
 
     # Plot the 'N' content
     plt.plot(x_values, n_content, label='N')
 
-    # Add labels and a legend
     plt.xlabel('Position in read (bp)')
     plt.ylabel('N content (%)')
     plt.ylim(0, 100)
     plt.legend()
 
-    # Save and/or display the plot
     plt.savefig(f"{sub_directory_path}/per_base_N_content_plot.png")
     #plt.show()
 

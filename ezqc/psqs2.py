@@ -10,17 +10,14 @@ def mean_qual_score(qual_string):
     return np.mean(qual_scores)
 
 def run_psqs2(quality_strings,sub_directory_path):
-# Calculate mean quality scores for each sequence
     mean_qual_scores = [mean_qual_score(qual_string) for qual_string in quality_strings]
 
     # Set up bins for the x-axis (mean sequence quality)
     bin_edges = np.arange(0, np.ceil(max(mean_qual_scores)) + 1, 1)
 
-    # Calculate the frequency (counts) for each bin
     counts, _ = np.histogram(mean_qual_scores, bins=bin_edges)
 
     proportion_low_quality = sum(mqs < 20 for mqs in mean_qual_scores) / len(mean_qual_scores)
-
 
     # Create the plot
     plt.figure(figsize=(10, 6))
@@ -31,7 +28,6 @@ def run_psqs2(quality_strings,sub_directory_path):
     plt.xticks(bin_edges)
     plt.grid(True, linestyle='--', alpha=0.5)
 
-    # Save and/or display the plot
     plt.savefig(f"{sub_directory_path}/per_sequence_quality_scores.png")
     # plt.show()
 

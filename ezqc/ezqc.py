@@ -11,6 +11,14 @@ from .ac8 import run_ac8
 import os
 
 def parse_fastq_file(file_obj):
+    """
+    This function reads a FASTQ file and yields the header, sequence and quality string line by line.
+
+    :param file_obj: A file object of a FASTQ file to be parsed.
+    :type file_obj: _io.TextIOWrapper
+    :yield: header, sequence and quality string from the FASTQ file.
+    :rtype: tuple
+    """
     while True:
         header = file_obj.readline().strip()
         if not header:
@@ -21,6 +29,14 @@ def parse_fastq_file(file_obj):
         yield header, sequence, quality_str
 
 def main():
+    """
+    This function is the main driver of the program. It accepts FASTQ files as input and generates quality analysis 
+    results as output.
+
+    It does so by taking user inputs (FASTQ files and an optional output directory) via command line arguments. It 
+    then creates necessary directories for output files. Finally, it processes each input FASTQ file using the 
+    parse_fastq_file function, performs quality analysis on the data, and writes the results to the output directory.
+    """
     logo = r'''
     ███████╗███████╗ ██████╗  ██████╗
     ██╔════╝╚══███╔╝██╔═══██╗██╔════╝

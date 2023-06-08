@@ -3,6 +3,15 @@ from .color_print import print_color
 
 
 def per_base_sequence_content(seqs):
+    """
+    This function calculates the percentage content of each base at each position in the sequences.
+
+    :param seqs: A list of sequences
+    :type seqs: list
+    :return: A tuple containing a dictionary of base contents, count of positions with greater than 10% differences, 
+             and count of positions with greater than 20% differences
+    :rtype: tuple
+    """
     greater_20 = 0
     greater_10 = 0
 
@@ -34,6 +43,14 @@ def per_base_sequence_content(seqs):
 
 
 def plot_base_content(base_content,sub_directory_path):
+    """
+    This function plots the base content for each base at each position in the read and saves the plot to a file.
+
+    :param base_content: A dictionary where the keys are the bases and the values are lists of percentages for each position
+    :type base_content: dict
+    :param sub_directory_path: The directory path where the plot will be saved
+    :type sub_directory_path: str
+    """
     # Create the x-values for our plot (the position in the read)
     x_values = list(range(1, len(base_content['A'])+1))
 
@@ -52,6 +69,16 @@ def plot_base_content(base_content,sub_directory_path):
     #plt.show()
 
 def run_pbsc3(seqs,sub_directory_path):
+    """
+    This function runs the per base sequence content analysis on a set of sequences, plots the results, and checks for significant differences.
+
+    :param seqs: A list of sequences
+    :type seqs: list
+    :param sub_directory_path: The directory path where the plot will be saved
+    :type sub_directory_path: str
+    :return: True if the analysis passes, False otherwise
+    :rtype: bool
+    """
     content, greater_10, greater_20 = per_base_sequence_content(seqs)
     plot_base_content(content,sub_directory_path)
     if (greater_20>0):

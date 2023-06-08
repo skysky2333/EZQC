@@ -3,6 +3,17 @@ import csv
 from .color_print import print_color
 
 def run_os7(dna_sequences,sub_directory_path):
+    """
+    Perform analysis on overrepresented sequences in the provided DNA sequences. Sequences with representation over
+    1% and 0.1% are specifically identified. Also, writes these overrepresented sequences to a CSV file.
+
+    :param dna_sequences: List of DNA sequences to analyze
+    :type dna_sequences: list of str
+    :param sub_directory_path: Path to the subdirectory where to save the CSV file with overrepresented sequences
+    :type sub_directory_path: str
+    :return: True if the sequences pass the overrepresentation check, False otherwise
+    :rtype: bool
+    """
     # Track only the first 100,000 sequences
     dna_sequences = dna_sequences[:100000] if len(dna_sequences)>100000 else dna_sequences
 

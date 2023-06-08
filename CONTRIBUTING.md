@@ -20,7 +20,7 @@ We're glad to see you here! We greatly appreciate your interest in our project a
 
 ## Code of Conduct
 
-By participating in this project, you are expected to uphold our Code of Conduct. Please report unacceptable behavior to [yul055@ucsd.edu](mailto:yul055@ucsd.edu).
+By participating in this project, you are expected to uphold our Code of Conduct. Please report unacceptable behavior to [Project Manager](mailto:yul055@ucsd.edu).
 
 ### Our Pledge
 

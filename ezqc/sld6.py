@@ -3,6 +3,14 @@ from .color_print import print_color
 from collections import Counter
 
 def detect_warnings_failures(sequences):
+    """
+    Detect warnings and failures based on the lengths of the sequences.
+
+    :param sequences: list of sequences
+    :type sequences: list of str
+    :return: True if no warnings or failures detected, False otherwise
+    :rtype: bool
+    """
     sequence_lengths = [len(seq) for seq in sequences]
     # Detect warning and failure situations
     if 0 in sequence_lengths:
@@ -17,6 +25,17 @@ def detect_warnings_failures(sequences):
 
 # version 2
 def run_sld6(sequences,sub_directory_path):
+    """
+    Execute the sequence analysis for sequence length distribution. This includes plotting the distribution and 
+    checking for warnings/failures.
+
+    :param sequences: list of sequences
+    :type sequences: list of str
+    :param sub_directory_path: The directory path where the plot will be saved
+    :type sub_directory_path: str
+    :return: True if the analysis passes, False otherwise
+    :rtype: bool
+    """
     sequence_lengths = [len(seq) for seq in sequences]
     length_freq = Counter(sequence_lengths)
     

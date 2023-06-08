@@ -12,6 +12,7 @@
 - [EZQC: Easy Quality Control for FastQ Files](#ezqc-easy-quality-control-for-fastq-files)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
+  - [Why Choose EZQC VS FastQC?](#why-choose-ezqc-vs-fastqc)
   - [Quick Start Guide](#quick-start-guide)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -32,6 +33,12 @@ EZQC is capable of performing the following analyses:
 6. Sequence Length Distribution
 7. Overrepresented sequences
 8. Adapter Content
+
+## Why Choose EZQC VS FastQC?
+
+- **Fast Result Readout When Batch Processing**: With EZQC, there's no need to click into each HTML report like you would with FastQC.
+- **Automatic Interpretation of Analysis Results**: The results are color-coded and provided in plain English, complete with suggestions. This makes it easier for users to interpret the results quickly.
+- **Generate Detailed Figures for Advanced Users**: For those who want a more in-depth analysis, EZQC is capable of generating detailed figures that aid in understanding the quality of your FastQ files.
 
 ## Quick Start Guide
 
@@ -111,4 +118,4 @@ Here's a brief description of the analyses performed by EZQC:
 
 ## Contributing
 
-We welcome contributions! Please see `CONTRIBUTING.md` for details on how to contribute.
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute.

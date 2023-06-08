@@ -9,6 +9,16 @@ adapters = {
 }
 
 def calculate_adapter_content(sequences, adapters):
+    """
+    Calculate the adapter content in the provided sequences.
+
+    :param sequences: List of sequences to analyze for adapter content
+    :type sequences: list of str
+    :param adapters: Dictionary of adapters, where keys are adapter names and values are adapter sequences
+    :type adapters: dict
+    :return: A dictionary of percentages for each adapter and a boolean indicating if all sequences passed the check
+    :rtype: dict, bool
+    """
 
     counts = {name: [0]*len(sequences) for name, seq in adapters.items()}
 
@@ -37,6 +47,14 @@ def calculate_adapter_content(sequences, adapters):
     return percentages, all_pass
 
 def plot_adapter_content(adapter_percentages,sub_directory_path):
+    """
+    Plot the adapter content percentages.
+
+    :param adapter_percentages: A dictionary of percentages for each adapter
+    :type adapter_percentages: dict
+    :param sub_directory_path: Path to the subdirectory where to save the plot image
+    :type sub_directory_path: str
+    """
     plt.figure()
     positions = list(range(1, max(map(len, adapter_percentages.values())) + 1))
 
@@ -53,6 +71,16 @@ def plot_adapter_content(adapter_percentages,sub_directory_path):
     #plt.show()
 
 def run_ac8(seqs,sub_directory_path):
+    """
+    Run the adapter content calculation and plot for the provided sequences.
+
+    :param seqs: List of sequences to analyze for adapter content
+    :type seqs: list of str
+    :param sub_directory_path: Path to the subdirectory where to save the plot image
+    :type sub_directory_path: str
+    :return: True if all sequences passed the adapter content check, False otherwise
+    :rtype: bool
+    """
     adapter_percentages, all_pass = calculate_adapter_content(seqs, adapters)
     plot_adapter_content(adapter_percentages,sub_directory_path)
     return all_pass

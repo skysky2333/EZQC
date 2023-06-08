@@ -5,6 +5,14 @@ from .color_print import print_color
 threshold = 24
 
 def find_largest_range(numbers):
+    """
+    This function finds the largest continuous range in a sorted list of numbers.
+
+    :param numbers: A sorted list of numbers
+    :type numbers: list
+    :return: The start and end of the largest continuous range in the input list
+    :rtype: tuple
+    """
     start = end = max_start = max_end = 0
     max_length = 0
 
@@ -30,9 +38,25 @@ def find_largest_range(numbers):
 
 
 def phred33_to_q(quality_str):
+    """
+    This function converts a Phred+33 ASCII-encoded quality string to a list of quality scores.
+
+    :param quality_str: The Phred+33 encoded quality string
+    :type quality_str: str
+    :return: The quality scores
+    :rtype: numpy.array
+    """
     return np.array([ord(ch) - 33 for ch in quality_str])
 
 def calculate_quality_scores(quality_strings):
+    """
+    This function calculates quality scores from a list of quality strings.
+
+    :param quality_strings: A list of Phred+33 encoded quality strings
+    :type quality_strings: list
+    :return: The quality scores and a mask array
+    :rtype: tuple of numpy.array
+    """
     num_sequences = len(quality_strings)
     max_length = max(len(qstr) for qstr in quality_strings)
     quality_scores = np.zeros((num_sequences, max_length))
@@ -46,6 +70,17 @@ def calculate_quality_scores(quality_strings):
     return quality_scores, mask
 
 def run_pbsq1(quality_strings,sub_directory_path):
+    """
+    This function calculates and plots quality scores from a list of quality strings, and saves the plot to a specified path. 
+    It also checks whether the quality scores meet a certain threshold.
+
+    :param quality_strings: A list of Phred+33 encoded quality strings
+    :type quality_strings: list
+    :param sub_directory_path: The path where the plot will be saved
+    :type sub_directory_path: str
+    :return: True if the quality scores meet the threshold, False otherwise
+    :rtype: bool
+    """
     quality_scores, mask = calculate_quality_scores(quality_strings)
 
     max_read_length = quality_scores.shape[1]

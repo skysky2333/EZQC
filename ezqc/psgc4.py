@@ -5,6 +5,17 @@ from .color_print import print_color
 # need to pip install scipy
 
 def detect_warnings_failures(gc_contents,sequences):
+    """
+    This function detects warnings or failures based on GC content of sequences. A warning or failure is issued if the sum of 
+    deviations from the mean GC content exceeds 15% or 30% of the total sequences respectively.
+
+    :param gc_contents: A list of GC contents for each sequence
+    :type gc_contents: list
+    :param sequences: A list of sequences
+    :type sequences: list
+    :return: False if a warning or failure is detected, True otherwise
+    :rtype: bool
+    """
     mu, std = norm.fit(gc_contents)
     deviations = [abs(content - mu) for content in gc_contents]
 
@@ -24,6 +35,17 @@ def detect_warnings_failures(gc_contents,sequences):
         return True
 
 def run_psgc4(sequences,sub_directory_path):
+    """
+    This function calculates the GC content for each sequence, plots a histogram of GC contents and the theoretical 
+    normal distribution, then checks for warnings or failures.
+
+    :param sequences: A list of sequences
+    :type sequences: list
+    :param sub_directory_path: The directory path where the plot will be saved
+    :type sub_directory_path: str
+    :return: True if the analysis passes, False otherwise
+    :rtype: bool
+    """
     gc_contents = []
     # Iterate through each sequence
     for seq in sequences:

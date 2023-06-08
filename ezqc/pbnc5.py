@@ -2,6 +2,14 @@ import matplotlib.pyplot as plt
 from .color_print import print_color
 
 def per_base_n_content(seqs):
+    """
+    Calculate the percentage of 'N' at each position in the given sequences.
+
+    :param seqs: list of sequences
+    :type seqs: list of str
+    :return: List of N content percentages, count of positions with greater than 10% and 20% N content
+    :rtype: list of float, int, int
+    """
     greater_20 = 0
     greater_10 = 0
     
@@ -29,6 +37,14 @@ def per_base_n_content(seqs):
     return n_content, greater_10, greater_20
 
 def plot_n_content(n_content,sub_directory_path):
+    """
+    Plot the 'N' content as a function of position in the read.
+
+    :param n_content: list of N content percentages
+    :type n_content: list of float
+    :param sub_directory_path: The directory path where the plot will be saved
+    :type sub_directory_path: str
+    """
     # Create the x-values for our plot (the position in the read)
     x_values = list(range(1, len(n_content)+1))
 
@@ -46,6 +62,17 @@ def plot_n_content(n_content,sub_directory_path):
     #plt.show()
 
 def run_pbnc5(seqs,sub_directory_path):
+    """
+    Execute the sequence analysis for 'N' content. This includes calculating 'N' content, plotting and printing 
+    warnings/failures based on thresholds.
+
+    :param seqs: list of sequences
+    :type seqs: list of str
+    :param sub_directory_path: The directory path where the plot will be saved
+    :type sub_directory_path: str
+    :return: True if the analysis passes, False otherwise
+    :rtype: bool
+    """
     content, greater_10, greater_20 = per_base_n_content(seqs)
     plot_n_content(content,sub_directory_path)
     if (greater_20>0):

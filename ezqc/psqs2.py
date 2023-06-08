@@ -3,13 +3,41 @@ import matplotlib.pyplot as plt
 from .color_print import print_color
 
 def phred33_to_q(qual_string):
+    """
+    This function converts a Phred+33 ASCII-encoded quality string to a list of quality scores.
+
+    :param qual_string: The Phred+33 encoded quality string
+    :type qual_string: str
+    :return: The quality scores
+    :rtype: list
+    """
     return [ord(ch) - 33 for ch in qual_string]
 
 def mean_qual_score(qual_string):
+    """
+    This function calculates the mean quality score from a Phred+33 encoded quality string.
+
+    :param qual_string: The Phred+33 encoded quality string
+    :type qual_string: str
+    :return: The mean quality score
+    :rtype: float
+    """
     qual_scores = phred33_to_q(qual_string)
     return np.mean(qual_scores)
 
 def run_psqs2(quality_strings,sub_directory_path):
+    """
+    This function calculates the mean quality scores from a list of quality strings, and then plots the distribution of 
+    these mean scores. The plot is saved to a specified path. It also checks whether the proportion of sequences with 
+    low quality is greater than 5%.
+
+    :param quality_strings: A list of Phred+33 encoded quality strings
+    :type quality_strings: list
+    :param sub_directory_path: The path where the plot will be saved
+    :type sub_directory_path: str
+    :return: True if the proportion of sequences with low quality is less than 5%, False otherwise
+    :rtype: bool
+    """
     mean_qual_scores = [mean_qual_score(qual_string) for qual_string in quality_strings]
 
     # Set up bins for the x-axis (mean sequence quality)
